@@ -23,6 +23,15 @@ def roll_dice(num_rolls, dice=six_sided):
     assert num_rolls > 0, 'Must roll at least once.'
     "*** YOUR CODE HERE ***"
 
+    total = 0
+    for i in range(num_rolls):
+        roll = dice()
+        if roll == 1:
+            return roll
+        total += roll
+
+    return total
+
 
 def take_turn(num_rolls, opponent_score, dice=six_sided):
     """Simulate a turn rolling NUM_ROLLS dice, which may be 0 (Free bacon).
@@ -303,3 +312,7 @@ def run(*args):
             exit(0)
     elif args.run_experiments:
         run_experiments()
+
+
+if __name__ == '__main__':
+    print(roll_dice(3))
