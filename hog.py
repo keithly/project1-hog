@@ -24,12 +24,24 @@ def roll_dice(num_rolls, dice=six_sided):
     "*** YOUR CODE HERE ***"
 
     total = 0
+    # for i in range(num_rolls):
+    #     roll = dice()
+    #     if roll == 1:
+    #         return roll
+    #     total += roll
+    #
+    # return total
+
+    # this passes all tests, but the output is the same as the above
+    # no explanation why this function must call "DICE exactly NUM_ROLLS times"
+    pig_out = False
     for i in range(num_rolls):
         roll = dice()
         if roll == 1:
-            return roll
+            pig_out = True
         total += roll
-
+    if pig_out:
+        return 1
     return total
 
 
@@ -315,4 +327,6 @@ def run(*args):
 
 
 if __name__ == '__main__':
-    print(roll_dice(3))
+    from hog_grader import make_test_dice
+    dice = make_test_dice(4, 1, 2)
+    print(roll_dice(1, dice))
